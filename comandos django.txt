@@ -1,0 +1,50 @@
+*INICIAR PROEYECTO:
+django-admin startproject Test3
+*ARCHIVO MANAGE.PY
+manage.py help (muestra la ayuda del comando)
+
+_init.py hace que python trate el proyecto de django como si fuese un paquete.
+setting.py trae las configuraciones del proyecto
+ 
+wsgi.py es el servidor web de proyecto django
+
+*base de datos SQLITE3
+******
+python manage.py migrate (inicia bd de python)
+python manage.py runserver (inicia servirdor de pruebas)
+*****PAGINA EN DJANGO*******
+Agregar dentro del studio code la pagina views.py
+
+codigo VIEWS.PY*************************
+
+from django.http import HttpResponse
+def saludos(request): #primera vista
+    return HttpResponse("hola como estan?.1era vista en DJANGO")
+
+Codigo URLS.PY*************************
+
+"""Test3 URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from Test3.views import saludos
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('saludos/', saludos),
+]
+
+
