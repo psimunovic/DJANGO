@@ -1,0 +1,8 @@
+def calculo_edad(request ,edad, agno):
+    
+    #edad_actual=41
+    periodo=agno-2022
+    edad_fut=edad+periodo
+    documento="<html><body><h2> en el año %s tendras %s años </h2></body></html>"%(agno,edad_fut)
+
+    return HttpResponse(documento)
