@@ -1,0 +1,84 @@
+¿Qué es un diccionario Python y para qué sirve?
+ 
+
+Un diccionario en Python es una estructura de datos que permite almacenar cualquier tipo de información, desde cadenas de texto o caracteres hasta números enteros, con decimales, listas e incluso otros diccionarios. Al igual que sucede con un diccionario de lengua, los datos se encuentran ordenados utilizando una clave única para cada uno de ellos, lo que permite localizar cada uno de los datos de una forma muy rápida. 
+
+ 
+
+Los diccionarios Python son mutables, esto quiere decir que no tienen un tamaño predefinido y que su contenido aumenta o disminuye según las necesidades de la aplicación. Todos los datos son también modificables, es decir, se puede añadir, modificar, eliminar y consultar todos los datos de una manera sencilla y rápida.
+
+ 
+
+Se trata de una estructura de datos similar a las listas, las tuplas o los conjuntos. Se utilizan básicamente para almacenar una gran cantidad de datos de forma ordenada, con el objetivo de utilizarlos para algún propósito en concreto, más adelante podrás ver algunos ejemplos de uso. 
+
+Ejemplos de diccionario de datos en Python
+ 
+
+Los valores de un diccionario se guardan utilizando un par de valores que siempre van enlazados. Una es la denominada como Key o Clave, que es la que nos permite encontrar un dato dentro del diccionario. Cada clave está acompañada por el dato o valor al que representa. Para entender fácilmente cómo funciona un diccionario en Python vamos a ver algunos sencillos ejemplos.
+
+ 
+
+Para definir un diccionario deberemos crear la variable utilizando un juego de llaves o mediante el método dict(), ambas opciones son correctas:
+
+ 
+
+diccionario = {}
+
+diccionario = dict()
+
+ 
+
+Si queremos definir una estructura de datos inicial de forma manual, deberemos usar las mismas llaves y rellenar el par de valores de los que hablamos anteriormente. El primer valor corresponderá con la clave, que tendrá que ir entre comillas simples en caso de ser una cadena, y el segundo, que será el propio valor que queremos almacenar:
+
+ 
+
+diccionario = {‘nombre’: ‘Antonio’}
+
+ 
+
+Si queremos almacenar varios datos, tan solo deberemos introducirlos separados por una coma.
+
+ 
+
+diccionario =  {‘nombre’: ‘Antonio’, ‘apellido’: ‘López’, ‘edad’: 45}
+
+ 
+
+Para imprimir en pantalla los distintos valores de un diccionario de Python deberemos usar la función print acompañado por el nombre del diccionario y la clave, que irá entre corchetes:
+
+ 
+
+print diccionario[‘nombre’] -> Se mostrará en pantalla Antonio
+
+print diccionario[‘apellido’] -> Se mostrará en pantalla López
+
+ 
+
+Para consultar los datos de un diccionario en Python podemos utilizar el método keys(), que devuelve el listado de todas las claves, o el método values(), que nos devuelve todos los valores que contienen un diccionario.
+
+ 
+
+print diccionario.keys() -> [nombre, apellido, edad]
+
+print diccionario.values() ->[Antonio, López, 45]
+
+ 
+
+También podemos utilizar otros métodos para manejar de forma sencilla todos los datos de un diccionario:
+
+clear(): elimina todos los datos de un diccionario. Ej: diccionario.clear()
+get(clave): permite consultar uno de los datos guardados. Ej: diccionario.get(nombre)
+pop(clave): permite eliminar un elemento del diccionario. Ej: diccionario.pop(edad)
+setdefault(): permite agregar un nuevo elemento al diccionario. Ej: diccionario.setdefault(‘telefono’:229589837)
+diccionario[‘nombre’] =’Felipe’ permite modificar un dato del diccionario
+¿Qué utilidad real tienen los diccionarios en Python?
+ 
+
+A medida que has ido leyendo este artículo seguro que se te han ocurrido un montón de utilidades reales en la que los diccionarios de Python pueden ser verdaderamente útiles. Para que puedas ver el potencial de esta estructura de datos te vamos a mostrar tres sencillos ejemplos de uso que podrían ser totalmente funcionales. 
+
+ 
+
+Agenda: como un diccionario puede guardar objetos o incluso otros diccionarios, es fácil pensar que se trata de una estructura de datos ideal para realizar una agenda telefónica para nuestro móvil. Se pueden almacenar todos los datos necesarios de una persona, desde su nombre o teléfono hasta su dirección de correo electrónico.
+Control de stock: imagina que tienes una tienda y necesitas guardar de forma ordenada todos tus productos. Un diccionario es una estructura de datos adecuada para programar una aplicación de control de stock, que permita manejar de una forma sencilla el inventario de productos de un negocio.
+Participantes de una carrera: también podría hacerse un aplicativo para guardar todos los participantes de una carrera popular, ya que podemos agregar participantes, modificar sus datos o eliminar un participante si este se da de baja. 
+Los diccionarios en Python es una estructura de datos que puede convertirse en una compleja base de datos, y que incluso puede almacenarse de forma permanente en un sistema de ficheros. La cantidad de aplicaciones de todo tipo que se pueden desarrollar gracias a los diccionarios Python son simplemente infinitas
