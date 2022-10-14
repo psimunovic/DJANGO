@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="C:/django/css/django.css">
+        <style>
+          body {
+              background-color: lightcoral;
+            }
+          
+            h1 {
+              color: white;
+              text-align: center;
+            }
+            
+            p {
+              font-family: verdana;
+              font-size: 20px;
+            }
+        </style>
+    </head>
+    <header>
+        <h1>Esto es el la 2da Plantilla de ejemplo</h1>
+    </header>
+    <body>
+        {% include "menu.html"%}
+        <h2> Esto es una plantilla
+        </h2>
+        <p>Mi nombre es {{nombre_persona}} {{apellido_persona}} {{fecha_act}} </p>
+        <p>Esto es un parrafo de ejemplo que podria decir algo pero en realidad no dice nada ya que no hay que mencionar dentro de esta parte de la demostracion puesto que esto ya fue visto en la asignatura de front end el semestre pasado.</p>
+        <p><h3>Listado de temas</h3></p>
+        <p>
+          <ul>
+            {%if temas %}
+              {% for temas_c in temas %}
+
+                  <li> {{temas_c}} </li>
+
+              {% endfor %}
+            {% else %}  
+              <p>No se encontro contenido</p>
+            {%endif%}
+          </ul>
+        </p>
+      </body>
+    </html>
