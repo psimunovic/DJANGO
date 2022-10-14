@@ -1,0 +1,10 @@
+cd..
+cd..
+mkdir backend
+cd backend
+---------------------------
+backend* pip install django
+django-admin startproject "bit"
+cd bit
+python manage.py migrate
+python manage.py runserver
