@@ -1,0 +1,144 @@
+Tener creado el entorno virtual
+pip install virtualenv
+pip freeze(muestra lo instalado)
+*******************************
+Crear modelo
+django-admin startproject [nombreprojecto]
+acceder a proyecto
+python manage.py migrate
+python manage.py runserver
+********************************
+Crear aplicacion
+django-admin startapp [nombreapp]
+Dentro del modelo agregar la app dentro del settings
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'app',<-----esta
+]
+****************************************
+Ejemplo modelo1:
+(archivo views.py de la app)
+from django.http import HttpResponse
+# Create your views here.
+def index(request):
+    return HttpResponse("Lista de productos")
+-------------------------------------------------------
+(archivo urls.py de la app)
+from django.urls import path
+from . import views
+urlpatterns=[
+path('', views.index, name='index'),
+]
+--------------------------------------------------------
+(archivo urls.py del modelo)
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('app/', include('app.urls'))
+]
+
+****************************************
+Ejemplo MODELO2
+(archivo views.py de la app)
+
+from django.shortcuts import render
+from django.http import HttpResponse
+# Create your views here.
+#def index0(request):
+    #return HttpResponse("Lista de productos")
+def index(request):
+    context = {'prod': 'Lista de productos'}
+    return render(request, 'index.html', context)
+
+-----------------------------------------------------
+NO OLVIDAR SETIAR 'DIRS' DE SETTING DEL MODELO
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': ['C:/django/envs/modelo1/templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+---------------------------------------------------
+Html del MODELO2(nombre html index.html)
+
+<!DOCTYPE html>
+<body>
+    <h1>Lista de productos CHANGO</h1>
+    <h3>Item: {{prod}}</h3>
+</body>
+</html>
+
+****************************************
+EJEMPLO MODELO3 
+
+En el archivo models 
+from django.db import models
+
+# Create your models here.
+class productos(models.Model):
+    tipo=models.CharField(max_length=30)
+    nombre=models.CharField(max_length=50)
+    codigo=models.IntegerField()
+Una vez listo hacer los siguientes comandos
+py manage.py makemigrations [nombreapp]
+py manage.py migrate
+------------------------------------------------
+Para poblar la BD
+
+py manage.py shell
+
+Y luego
+
+from app.models import productos
+prod1=productos(tipo="abarrote", nombre="conserva don pepe", codigo="96584")
+prod1.id
+prod1.save()
+items.objects.all()
+-------------------------------------------------
+index2.html
+
+<!DOCTYPE html>
+<body>
+    <h1>Catalogo CHANGO</h1>
+    <h3>Listado de productos</h3>
+    <h4>Lista: {{prod}} </h4>
+    {% if productos %}
+    <ul>
+        { % for productos in productos% }
+        <li>{{ productos.tipo }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
+
+---------------------------------------------------
+
+views.py de la app
+
+from django.shortcuts import render
+from django.http import HttpResponse
+from .models import items
+
+def index(request):
+    productos = items.objects.all()
+    context = {'prod': 'Lista de productos', 'lista prod': productos}
+    return render(request, 'index2.html', context)
+
+
