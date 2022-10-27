@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+    <head>
+        <title> Django university</title>
+    </head>
+    <body>
+        <h1>Hola</h1>
+        <h2>Clase: {{ clase }}</h2>
+        {% if estudiantes %}
+        <ul>
+            {%for estudiante in estudiantes %}
+                <li>{{ estudiante.nombre }} / {{ estudiante.email }}</li>
+            {%endfor%}
+        </ul>
+        {%endif%}
+    </body>
+    <style>
+        body{
+            background-color: aquamarine;
+        }
+    </style>
+</html>
