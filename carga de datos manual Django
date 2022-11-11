@@ -1,0 +1,21 @@
+py manage.py sqlmigrate {nombreapp} {numero de migracion}=genera el codigo sql
+py manage.py migrate
+
+****ingreso data
+
+from gestionpedidos.models import Articulos
+>>> art=Articulos(nombre="mesa", seccion="decoracion", precio=90)
+>>> art.id    
+>>> art.save()
+>>> art2=Articulos(nombre="sillon", seccion="decoracion", precio=120) 
+>>> art2.save()
+art3=Articulos.objects.create(nombre="taladro", seccion="ferreteria", precio=85)===> crea y graba los datos en la BD
+
+******update
+
+art.precio=95
+>>> art.save()
+
+borrar************
+art5=Articulo.object.get(id=6)===>selecciona elemento
+art5.delete()====>borrar elemento
